@@ -1,0 +1,112 @@
+﻿@model Doctor_Appointment.Models.Doctor
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+<div class="px-5">
+
+<h4>Doctor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="gender" class="control-label"></label>
+                <select asp-for="gender" class="form-control" asp-items="@Html.GetEnumSelectList<Gender>()"></select>
+                <span asp-validation-for="gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="specialist" class="control-label"></label>
+                <select asp-for="specialist" class="form-control" asp-items="@Html.GetEnumSelectList<Spectialist>()"></select>
+                <span asp-validation-for="specialist" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Degree" class="control-label"></label>
+                <select asp-for="Degree" class="form-control" asp-items="@Html.GetEnumSelectList<MedicalDegree>()"></select>
+                <span asp-validation-for="Degree" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Clinic_Location" class="control-label"></label>
+                <input asp-for="Clinic_Location" class="form-control" />
+                <span asp-validation-for="Clinic_Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Clinic_PhonNum" class="control-label"></label>
+                <input asp-for="Clinic_PhonNum" class="form-control" />
+                <span asp-validation-for="Clinic_PhonNum" class="text-danger"></span>
+            </div>
+                        <div class="form-group">
+                <label asp-for="dailyAvailbility.date" class="control-label">Days</label>
+                <input type="date" asp-for="dailyAvailbility.date" class="form-control" />
+                <span asp-validation-for="dailyAvailbility.date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dailyAvailbility.starttime" class="control-label">Start Time</label>
+                <input type="time" asp-for="dailyAvailbility.starttime" class="form-control" />
+                <span asp-validation-for="dailyAvailbility.starttime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dailyAvailbility.endtime" class="control-label">End Time</label>
+                <input type="time" asp-for="dailyAvailbility.endtime" class="form-control" />
+                <span asp-validation-for="dailyAvailbility.endtime" class="text-danger"></span>
+            </div>
+
+               <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input type="text" asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="WatingTime" class="control-label">Waiting Time</label>
+                <input type="text" asp-for="WatingTime" class="form-control" />
+                <span asp-validation-for="WatingTime" class="text-danger"></span>
+            </div>
+          
+            @*  <div class="form-group">
+            <label asp-for="Image" class="control-label"></label>
+            <input asp-for="Image" class="form-control" />
+            <span asp-validation-for="Image" class="text-danger"></span>
+            </div>*@
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HomeExamination" /> @Html.DisplayNameFor(model => model.HomeExamination)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+   </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+

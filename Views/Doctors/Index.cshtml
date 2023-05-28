@@ -1,0 +1,253 @@
+﻿@model IEnumerable<Doctor_Appointment.Models.Doctor>
+@using System.ComponentModel;
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+
+<!-- portfolio -->
+<section class="section doctors">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+                <div class="section-title">
+                    <h2>Doctors</h2>
+                    <div class="divider mx-auto my-4"></div>
+                    <p>
+                        We provide a wide range of creative services adipisicing elit. Autem maxime rem modi eaque,
+                        voluptate. Beatae officiis neque
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 text-center  mb-5">
+            <div class="btn-group btn-group-toggle " data-toggle="buttons">
+                <label class="btn active ">
+                    <input type="radio" name="shuffle-filter" value="all" checked="checked" />All Department
+                </label>
+                @{
+                    foreach (Spectialist specialization in Enum.GetValues(typeof(Spectialist)))
+                    {
+                        DescriptionAttribute[] attributes = (DescriptionAttribute[])specialization
+                        .GetType()
+                        .GetField(specialization.ToString())
+                        .GetCustomAttributes(typeof(DescriptionAttribute), false);
+
+                        string description = attributes.Length > 0 ? attributes[0].Description : specialization.ToString();
+
+                        <label class="btn ">
+                            <input type="radio" name="shuffle-filter" value="@description" />@description
+                        </label>
+                    }
+                }
+            </div>
+        </div>
+
+        <div class="row shuffle-wrapper portfolio-gallery">
+            @{
+                foreach (var doctor in Model)
+                {
+                    <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item"
+                     data-groups="[&quot;@doctor.GetSpecializationDescription()&quot;]">
+                        <div class="position-relative doctor-inner-box">
+                            <div class="doctor-profile">
+                                <div class="doctor-img">
+                                    <img src=@doctor.GetImage() alt="doctor-image" class="img-fluid w-100">
+                                </div>
+                            </div>
+                            <div class="content mt-3">
+                                <h4 class="mb-0"><a asp-area="" asp-controller="Doctors" asp-action="Details" asp-route-id="@doctor.DoctorID">@doctor.FullName</a></h4>
+                                <p>@doctor.GetSpecializationDescription()</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+    </div>
+</section>
+<section class="page-title bg-1">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block text-center">
+                    <span class="text-white">All Doctors</span>
+                    <h1 class="text-capitalize mb-5 text-lg">Specalized doctors</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /portfolio -->
+@*<section class="section cta-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="cta-content">
+                    <div class="divider mb-4"></div>
+                    <h2 class="mb-5 text-lg">
+                        We are pleased to offer you the <span class="title-color">
+                            chance to
+                            have the healthy
+                        </span>
+                    </h2>
+                    <a href="appoinment.html" class="btn btn-main-2 btn-round-full">
+                    Get appoinment<i class="icofont-simple-right  ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*
+<h1>Index</h1>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.specialist)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Degree)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clinic_Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clinic_PhonNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dailyAvailbility.date)
+            </th>
+              <th>
+                @Html.DisplayNameFor(model => model.dailyAvailbility.starttime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dailyAvailbility.endtime)
+            </th>
+
+             <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.WatingTime)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.HomeExamination)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.specialist)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Degree)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clinic_Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clinic_PhonNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dailyAvailbility.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dailyAvailbility.starttime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dailyAvailbility.endtime)
+                </td>
+
+                <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.WatingTime)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HomeExamination)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.DoctorID">Edit</a> |
+                <a asp-action="Index" asp-controller="DailyAvailbilities" asp-route-docid="@item.DoctorID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.DoctorID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+*@

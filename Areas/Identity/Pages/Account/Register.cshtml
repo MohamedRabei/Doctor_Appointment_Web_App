@@ -1,0 +1,93 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+
+
+<div style="margin:auto;width:50%">
+    <h1>@ViewData["Title"]</h1>
+    <div>
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <label asp-for="Input.Email">Email</label>
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <label asp-for="Input.Password">Password</label>
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            @*<div class="form-check  ">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Doctor
+                </label>
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Patient
+                </label>
+            </div>
+              <label class="label">Select a Role</label>
+            <div class="col-md-10">
+                @foreach (var item in Model.Roles)
+                {
+                    <input asp-for="SelectedRole" type="radio" value="@item.Id" /> @item.RoleName
+                }
+            </div>*@
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary mb-3" style="background-color:#e12454">Register</button>
+
+        </form>
+    </div>
+    <div>
+        <section>
+            <h3>Use another service to register.</h3>
+            <hr />
+            @*  @{
+            if ((Model.ExternalLogins?.Count ?? 0) == 0)
+            {
+            <div>
+            <p>
+            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
+            about setting up this ASP.NET application to support logging in via external services</a>.
+            </p>
+            </div>
+            }
+            else
+            {*@
+            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                <div>
+                    <p>
+                        @foreach (var provider in Model.ExternalLogins!)
+                        {
+                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account" style="background-color:#e12454">@provider.DisplayName</button>
+                        }
+                    </p>
+                </div>
+            </form>
+
+
+        </section>
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

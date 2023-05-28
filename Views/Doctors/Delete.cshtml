@@ -1,0 +1,112 @@
+﻿@model Doctor_Appointment.Models.Doctor
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+<div class="px-5">
+<div>
+    <h4>Doctor</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.specialist)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.specialist)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Degree)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Degree)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Clinic_Location)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Clinic_Location)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Clinic_PhonNum)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Clinic_PhonNum)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.dailyAvailbility.date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.dailyAvailbility.date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.dailyAvailbility.starttime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.dailyAvailbility.starttime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.dailyAvailbility.endtime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.dailyAvailbility.endtime)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.WatingTime)
+        </dt>
+
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.WatingTime)
+        </dd>
+
+     
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HomeExamination)
+        </dt>
+
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HomeExamination)
+        </dd>
+    </dl>
+</div>
+<div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="DoctorID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
+</div>
